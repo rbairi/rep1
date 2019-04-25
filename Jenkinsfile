@@ -4,7 +4,11 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'python --version; echo hello world;'
+                // sh 'python --version; echo hello world;'
+                sh """
+                echo HELLO WORLD
+                echo TESTING MULTILINE HELLO WORLD
+                """
             }
         }
     }
