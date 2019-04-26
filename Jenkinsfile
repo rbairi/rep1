@@ -10,8 +10,43 @@ pipeline {
                 echo TESTING MULTILINE HELLO WORLD
                 pwd
                 ls -l
-                
+                echo BEFORE SSH_PUBLISHER
                 """
+                
+                // Start of sshPublisher
+                sshPublisher(
+                    publishers: [
+                        sshPublisherDesc(
+                            // Only configured hosts in Jenkins can be given for "configName" parameter
+                            // Contact DevOps to add your required hosts to Jenkins configuration before
+                            // specifing the value for "configName"
+                            configName: 'test_host', 
+                            transfers: [
+                                sshTransfer(
+                                    cleanRemote: false, 
+                                    excludes: '', 
+                                    execCommand: '', 
+                                    execTimeout: 120000, 
+                                    flatten: false, 
+                                    makeEmptyDirs: false, 
+                                    noDefaultExcludes: false, 
+                                    patternSeparator: '[, ]+', 
+                                    remoteDirectory: '/home/vagrant/from_jenkins', 
+                                    remoteDirectorySDF: false, 
+                                    removePrefix: '', 
+                                    sourceFiles: '*'
+                                )
+                            ], 
+                            usePromotionTimestamp: false, 
+                            useWorkspaceInPromotion: false, 
+                            verbose: false
+                        )
+                    ]
+                )
+                // END of sshPublisher
+                
+                sh 'echo BEFORE SSH_PUBLISHER;'
+                
             }
         }
     }
