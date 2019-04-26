@@ -8,6 +8,9 @@ pipeline {
                 sh """
                 echo HELLO WORLD
                 echo TESTING MULTILINE HELLO WORLD
+                pwd
+                ls -l
+                
                 """
             }
         }
