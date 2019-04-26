@@ -31,7 +31,7 @@ pipeline {
                                     makeEmptyDirs: false, 
                                     noDefaultExcludes: false, 
                                     patternSeparator: '[, ]+', 
-                                    remoteDirectory: '', 
+                                    remoteDirectory: 'from_jenkins_pipeline', 
                                     remoteDirectorySDF: false, 
                                     removePrefix: '', 
                                     sourceFiles: '*'
