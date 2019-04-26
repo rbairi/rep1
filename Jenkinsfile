@@ -45,7 +45,7 @@ pipeline {
                 )
                 // END of sshPublisher
                 
-                sh 'echo BEFORE SSH_PUBLISHER;'
+                sh 'echo AFTER SSH_PUBLISHER;'
                 
             }
         }
