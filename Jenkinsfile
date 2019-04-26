@@ -34,7 +34,7 @@ pipeline {
                                     remoteDirectory: 'from_jenkins_pipeline', 
                                     remoteDirectorySDF: false, 
                                     removePrefix: '', 
-                                    sourceFiles: '*'
+                                    sourceFiles: '**/*'
                                 )
                             ], 
                             usePromotionTimestamp: false, 
