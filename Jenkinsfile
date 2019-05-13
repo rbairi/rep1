@@ -50,7 +50,7 @@ pipeline {
 echo \'This is on the test_host: \' `hostname`
 echo \'PWD: \' `pwd`
 echo \'EXECUTING ./deploy.sh\'
-./deploy.sh
+bash ./deploy.sh
 echo \'DONE\'
 ''',
                                     execTimeout: 120000,
