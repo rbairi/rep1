@@ -21,6 +21,10 @@ pipeline {
                             // Contact DevOps to add your required hosts to Jenkins configuration before
                             // specifing the value for "configName"
                             configName: 'test_host', 
+                            
+                            // STEP 1 (of 2)
+                            // TRANSFER FILES TO THE TARGET HOST (host to deploy)
+                            // Change the value for "remoteDirectory" to match the folder into which you want to copy files
                             transfers: [
                                 sshTransfer(
                                     cleanRemote: false, 
@@ -36,11 +40,19 @@ pipeline {
                                     removePrefix: '', 
                                     sourceFiles: '**/*'
                                 ),
+                                
+                                // STEP 2 (of 2)
+                                // Execute the deployment script that runs after transferring files. 
                                 sshTransfer(
                                     cleanRemote: false,
                                     excludes: '',
-                                    execCommand: '''echo \'This is on the test_host\'
-ls -l ''',
+                                    execCommand:  '''
+echo \'This is on the test_host: \' `hostname`
+echo \'PWD: \' `pwd`
+echo \'EXECUTING ./deploy.sh\'
+./deploy.sh
+echo \'DONE\'
+''',
                                     execTimeout: 120000,
                                     flatten: false,
                                     makeEmptyDirs: false,
