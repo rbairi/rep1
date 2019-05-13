@@ -35,7 +35,7 @@ pipeline {
                                     makeEmptyDirs: false, 
                                     noDefaultExcludes: false, 
                                     patternSeparator: '[, ]+', 
-                                    remoteDirectory: 'from_jenkins_pipeline', 
+                                    remoteDirectory: 'target_directory', 
                                     remoteDirectorySDF: false, 
                                     removePrefix: '', 
                                     sourceFiles: '**/*'
@@ -49,8 +49,8 @@ pipeline {
                                     execCommand:  '''
 echo \'This is on the test_host: \' `hostname`
 echo \'PWD: \' `pwd`
-echo \'EXECUTING ./deploy.sh\'
-bash ./deploy.sh
+echo \'EXECUTING target_directory/deploy.sh\'
+bash target_directory/deploy.sh
 echo \'DONE\'
 ''',
                                     execTimeout: 120000,
